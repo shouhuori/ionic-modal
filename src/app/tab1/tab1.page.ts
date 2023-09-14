@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CheckboxCustomEvent } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab1',
@@ -7,6 +8,18 @@ import { Component } from '@angular/core';
 })
 export class Tab1Page {
 
+  presentingElement = document.querySelector('.ion-page');
+  canDismiss = false;
+
+
   constructor() {}
 
+  ngOnInit() {
+    this.presentingElement = document.querySelector('.ion-page');
+  }
+
+  onTermsChanged(event: Event) {
+    const ev = event as CheckboxCustomEvent;
+    this.canDismiss = ev.detail.checked;
+  }
 }
